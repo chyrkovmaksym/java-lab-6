@@ -13,6 +13,7 @@ public class SweetSet implements Set<Sweet>{
     // Fields
     private Sweet[] elements;
     private int size;
+    private CustomErrorHandler errorHandler;
 
     /**
      * Constructs an empty SweetSet with an initial capacity.
@@ -20,6 +21,7 @@ public class SweetSet implements Set<Sweet>{
     public SweetSet(){
         this.elements = new Sweet[INITIAL_CAPACITY];
         this.size = 0;
+        this.errorHandler = new CustomErrorHandler();
     }
 
     /**
@@ -147,6 +149,8 @@ public class SweetSet implements Set<Sweet>{
      */
     @Override
     public boolean add(Sweet sweet) {
+        errorHandler.validateObjectNotNull(sweet);
+
         if (!contains(sweet)) {
             if (size == elements.length) {
                 // If the array is full, resize it
@@ -168,6 +172,8 @@ public class SweetSet implements Set<Sweet>{
      */
     @Override
     public boolean remove(Object o) {
+        errorHandler.validateObjectNotNull(o);
+
         for (int i = 0; i < size; i++) {
             if (Objects.equals(o, elements[i])) {
                 // Shift elements to remove the found element using a for loop
@@ -206,6 +212,8 @@ public class SweetSet implements Set<Sweet>{
      */
     @Override
     public boolean addAll(Collection<? extends Sweet> collection) {
+        errorHandler.validateObjectNotNull(collection);
+
         boolean modified = false;
 
         for (Sweet sweet : collection) {
@@ -227,7 +235,7 @@ public class SweetSet implements Set<Sweet>{
      */
     @Override
     public boolean retainAll(Collection<?> collection) {
-        Objects.requireNonNull(collection);
+        errorHandler.validateObjectNotNull(collection);
 
         int originalSize = size;
         Sweet[] newArray = new Sweet[size];
@@ -258,7 +266,7 @@ public class SweetSet implements Set<Sweet>{
      */
     @Override
     public boolean removeAll(Collection<?> collection) {
-        Objects.requireNonNull(collection);
+        errorHandler.validateObjectNotNull(collection);
 
         int originalSize = size;
 

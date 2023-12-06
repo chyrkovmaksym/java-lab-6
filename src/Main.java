@@ -3,7 +3,7 @@ import java.util.Comparator;
 // Main class containing the program's entry point
 public class Main {
     // Main method where the program execution begins
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         try {
             // Obtain a gift by calling the getGift() method
             Gift myGift = getGift();
@@ -34,33 +34,28 @@ public class Main {
                 // Print a message if no candy is found in the specified range
                 System.out.println("No candy found in the specified range of chocolate content.");
             }
-        } catch (Exception e) {
+        } catch (CustomException e) {
             // Handle any unexpected exception that might occur during program execution
-            throw new Exception("An unexpected error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
     // Method to create and return a gift with various sweets
-    private static Gift getGift() throws Exception {
-        try {
-            // Create instances of different sweets (Candy, Cookie, Jelly)
-            Candy chocolateCandy = new Candy("Chocolate Candy", 0.2, 0.7);
-            Candy caramelCandy = new Candy("Caramel Candy", 0.15, 0.5);
-            Cookie glutenFreeCookie = new Cookie("Gluten-Free Cookie", 0.1, true);
-            Jelly fruitJelly = new Jelly("Fruit Jelly", 0.08, "Strawberry");
+    private static Gift getGift() {
+        // Create instances of different sweets (Candy, Cookie, Jelly)
+        Candy chocolateCandy = new Candy("Chocolate Candy", 0.2, 0.7);
+        Candy caramelCandy = new Candy("Caramel Candy", 0.15, 0.5);
+        Cookie glutenFreeCookie = new Cookie("Gluten-Free Cookie", 0.1, true);
+        Jelly fruitJelly = new Jelly("Fruit Jelly", 0.08, "Strawberry");
 
-            // Create a gift and add the sweets to it
-            Gift myGift = new Gift();
-            myGift.addSweet(chocolateCandy);
-            myGift.addSweet(caramelCandy);
-            myGift.addSweet(glutenFreeCookie);
-            myGift.addSweet(fruitJelly);
+        // Create a gift and add the sweets to it
+        Gift myGift = new Gift();
+        myGift.addSweet(chocolateCandy);
+        myGift.addSweet(caramelCandy);
+        myGift.addSweet(glutenFreeCookie);
+        myGift.addSweet(fruitJelly);
 
-            // Return the created gift
-            return myGift;
-        } catch (Exception e) {
-            // Handle exceptions that might occur during the creation of the gift
-            throw new Exception("Error creating the gift: " + e.getMessage());
-        }
+        // Return the created gift
+        return myGift;
     }
 }
