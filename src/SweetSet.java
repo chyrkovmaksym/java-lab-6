@@ -13,7 +13,7 @@ public class SweetSet implements Set<Sweet>{
     // Fields
     private Sweet[] elements;
     private int size;
-    private CustomErrorHandler errorHandler;
+    private final CustomErrorHandler errorHandler;
 
     /**
      * Constructs an empty SweetSet with an initial capacity.

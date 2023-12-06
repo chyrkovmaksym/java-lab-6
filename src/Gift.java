@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class Gift {
     // Private field representing a collection of sweets in the gift
     private final ArrayList<Sweet> sweets;
-    private CustomErrorHandler errorHandler;
+    private final CustomErrorHandler errorHandler;
 
     // Constructor to initialize the Gift object with an empty list of sweets
     public Gift() {
