@@ -98,7 +98,7 @@ public class SweetSet implements Set<Sweet>{
             @Override
             public Sweet next() {
                 if (!hasNext()) {
-                    throw new NoSuchElementException();
+                    throw new CustomException("No such element");
                 }
                 return (Sweet) elements[currentIndex++];
             }
